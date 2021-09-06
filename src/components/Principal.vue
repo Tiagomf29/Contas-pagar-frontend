@@ -9,10 +9,13 @@
         <div class="q-pa-md">
           <q-tree
             :nodes="simple"
-            node-key="label"
+            node-key="label"            
             selected-color="primary"
             v-model:selected="selected"
             default-expand-all
+            tick-strategy="none"
+            accordion
+            no-connectors                 
           />
         </div>
       </template>
@@ -22,11 +25,12 @@
           v-model="selected"
           animated
           transition-prev="jump-up"
-          transition-next="jump-up"
+          transition-next="jump-up" 
+                  
         >
 
           <q-tab-panel name="Cadastrar Salário">
-            <div class="text-h4 q-mb-md">Cadastro de salários
+            <div class="text-h4 q-mb-md">
                 <Cadastro-salario />    
             </div>            
           </q-tab-panel>          
@@ -47,11 +51,13 @@
           </q-tab-panel> 
 
           <q-tab-panel name="Forma de pagamento">
-            <div class="text-h4 q-mb-md">Room service</div>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>            
+            <div class="text-h4 q-mb-md">
+                <Forma-pagamento />
+            </div>
+            
           </q-tab-panel>  
 
-          <q-tab-panel name="Pagador">
+          <q-tab-panel name="Pagador" >
             <div class="text-h4 q-mb-md">Room service</div>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>            
           </q-tab-panel>  
@@ -121,23 +127,27 @@
 <script>
 import { ref } from 'vue'
 import CadastroSalario from './CadastroSalario.vue';
+import FormaPagamento from './FormaPagamento.vue';
 export default {
     components:{
-        CadastroSalario
+        CadastroSalario,
+        FormaPagamento
     },
   setup () {
     return {
       splitterModel: ref(28),
-      selected: ref('Salários'),
+      selected: ref('Menu'),
 
       simple: [
         {
           label: 'Menu',
           icon:'home',
+          
           children: [
             {
               label: 'Salários',
               icon: 'price_change',
+              
 
               children:[
                   {
